@@ -1,30 +1,14 @@
 import './App.css';
-import { useState, useEffect } from "react";
+import Banner from './Banner';
+import Router from "./Router";
 
 function App() {
-  const [movieData, setMovieData] = useState("");
-  const [movieDetail, setMovieDetaile] = useState("");
 
-  useEffect(() => {
-    fetch("https://code-challenge.spectrumtoolbox.com/api/movies", { 
-      headers: {
-        Authorization: "Api-Key q3MNxtfep8Gt", },
-    }).then((res => res.json()))
-    .then((json) => setMovieData(json));
-  }, []);
-
-  useEffect(() => {
-    fetch("https://code-challenge.spectrumtoolbox.com/api/movies/SP015622350000", { 
-      headers: {
-        Authorization: "Api-Key q3MNxtfep8Gt", },
-    }).then((res => res.json()))
-    .then((json) => setMovieDetaile(json));
-  }, []);
 
   return (
     <div className="App">
-      {console.log(movieData)}
-      {console.log(movieDetail)}
+      <Banner />
+      <Router />
     </div>
   );
 }
