@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from "react";
 
 function App() {
+  const [movieData, setMovieData] = useState("");
+  const [movieDetail, setMovieDetaile] = useState("");
+
+  useEffect(() => {
+    fetch("https://code-challenge.spectrumtoolbox.com/api/movies", { 
+      headers: {
+        Authorization: "Api-Key q3MNxtfep8Gt", },
+    }).then((res => res.json()))
+    .then((json) => setMovieData(json));
+  }, []);
+
+  useEffect(() => {
+    fetch("https://code-challenge.spectrumtoolbox.com/api/movies/SP015622350000", { 
+      headers: {
+        Authorization: "Api-Key q3MNxtfep8Gt", },
+    }).then((res => res.json()))
+    .then((json) => setMovieDetaile(json));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {console.log(movieData)}
+      {console.log(movieDetail)}
     </div>
   );
 }
