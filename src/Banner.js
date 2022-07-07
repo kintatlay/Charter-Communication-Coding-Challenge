@@ -1,10 +1,11 @@
 import React from 'react'
+import "./css/Banner.css";
 
 const Banner = () => {
     return (
-        <div>
-            Banner
-        </div>
+        <h1 className="banner">
+            Charter / Spectrum Front-End Code Challenge
+        </h1>
     )
 }
 
