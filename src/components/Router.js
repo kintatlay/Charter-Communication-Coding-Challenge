@@ -6,7 +6,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import MovieDetail from "../MovieDetail";
+import MovieDetail from "./MovieDetail";
 import Loader from "./Loader";
 const Home = React.lazy(() => {
     return new Promise(resolve => {

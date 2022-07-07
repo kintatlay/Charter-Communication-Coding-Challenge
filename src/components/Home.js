@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 import "../css/Home.css";
 import "./SearchBar";
 import SearchBar from './SearchBar';
+import Pagination from "../components/Pagination";
 
 const Home = ({movieData}) => {
     const [filteredData, setFilteredData] = useState([]);
     const [searchMovie, setSearchMovie] = useState("");
     const [genres, setGenres] = useState("All");
     const [genresOptions, setGenresOptions] = useState([])
+    const [currentPage, setCurrentPage] = useState(1);
+    const recordPerPage = 10;
+    const [displayData, setDisplayData] = useState([]);
 
     useEffect(() => {
         const genresOptions = movieData?.reduce((previousValue, currentValue) => {
@@ -22,6 +26,18 @@ const Home = ({movieData}) => {
         }, ["All"]);
         setGenresOptions(genresOptions)
     }, [])
+
+    const handleClickPrev = () => {
+        setCurrentPage(currentPage -1);
+    };
+
+    const handleClickNext = () => {
+        setCurrentPage(currentPage +1);
+    }
+
+    const handleClickPage = (targetPage) => {
+        setCurrentPage(targetPage);
+    }
 
     useEffect(() => {
         var filterSearchMovie = function(searchWord) {
@@ -37,8 +53,6 @@ const Home = ({movieData}) => {
 
     return (
         <div className="container--list-item--flex">
-        {console.log(filteredData)}
-        {console.log(genresOptions)}
                 <div className="container--menu--flex">
                     <SearchBar searchMovie={searchMovie} setSearchMovie={setSearchMovie} />
                     <div className="select--label--flex">
@@ -54,19 +68,27 @@ const Home = ({movieData}) => {
                 </div>
             <ul>
                 {filteredData.length !== 0 ?
-                    filteredData?.map((ele) => {
-                        const image = (process.env.PUBLIC_URL + `/assets/moviePosterImages/${ele.id}.jpeg`) === null ? (process.env.PUBLIC_URL + `/assets/moviePosterImages/defaultImage.jpeg`) : (process.env.PUBLIC_URL + `/assets/moviePosterImages/${ele.id}.jpeg`);
+                    filteredData?.slice((currentPage-1)*recordPerPage, (currentPage)*recordPerPage).map((ele) => {
+                        const image = (process.env.PUBLIC_URL + `/assets/moviePosterImages/${ele.id}.jpeg`);
                         return <Link className="container--list-item" to={`/Movie/${ele.id}`} key={ele.id}>
                             <h2 className="container--list-title--color">{ele.title}</h2>
                             <img src={image} onError={(event) => event.target.setAttribute("src", process.env.PUBLIC_URL + `/assets/moviePosterImages/defaultImage.jpeg`)} alt="Not working" /> 
                         </Link>
-                    }) :
+                    })
+                    :
                     <p className="message--fallback--text" >No results were found.</p>
                 }
-               
+                <Pagination
+                    totalPages={filteredData.length/recordPerPage}
+                    itemsPerPage={recordPerPage}
+                    handleClickPrev={handleClickPrev}
+                    handleClickNext={handleClickNext}
+                    totalItems={filteredData.length}
+                    currentPage={currentPage}
+                    handleClickPage={handleClickPage}
+                />
             </ul>
         </div>
-
     )
 };
 

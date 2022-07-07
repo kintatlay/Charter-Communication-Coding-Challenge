@@ -1,0 +1,51 @@
+.movie--detail--view {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.image--detail--size {
+    margin-top: 2em;
+    width: 350px;
+}
+
+.movie--detail-title--color {
+    color: rgba(255,255,255,0.6);
+    margin: 1em 0;
+}
+
+.movie--detail--color {
+    color: white;
+    float: left;
+    text-align: left;
+    padding: 0.3em 2em;;
+}
+
+.movie--detail--color  .movie--detail--bold {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+@media (min-width: 600px) {
+    .image--detail--size {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+    }
+
+    .movie--detail--view section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .movie--detail--color {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1200px) {
+
+} 
