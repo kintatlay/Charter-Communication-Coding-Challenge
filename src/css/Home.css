@@ -1,3 +1,29 @@
+.container--list-item--flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container--menu--flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20%;
+    margin: 4em 0 1em 0;
+}     
+
+.select--label--flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5%;
+    margin: 2em 0 2em 0;
+}     
+
+.container--menu--flex label {
+    color: white;
+}
+
 .container--list-item {
     display: flex;
     flex-direction: column;
@@ -13,6 +39,57 @@
     color: rgba(255,255,255,0.6);
 }
 
+.container--list-title--color img {
+    width: 260px;
+    height: 390px;
+}
+
+.select--dropdown,
+.select--dropdown * {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+.select--dropdown {
+    width: 12em;
+    position: relative;
+    background-color: #E6E6E6;
+    border-radius: 4px;
+}
+.select--dropdown select {
+    font-size: 1rem;
+    font-weight: normal;
+    max-width: 100%;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.select--dropdown select:active, .select--dropdown select:focus {
+    outline: none;
+    box-shadow: none;
+}
+.select--dropdown:after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #aaa;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.message--fallback--text {
+    color: white;
+    margin-top: 5em;
+}
+
 @media (min-width: 600px) {
     ul {
         display: flex;
@@ -23,15 +100,30 @@
     }
     .container--list-item {
         width: 30%;
-        margin: 50px 3% 0 3%;
+        margin: 10px 3% 50px 3%;
+    }
+    .select--dropdown select {
+        font-size: 1.2rem;
     }
 }
 
 @media (min-width: 1200px) {
     ul {
-        margin: 0 20% 0 20%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 0 15% 0 15%;
     }
     .container--list-item {
-        margin: 50px 0% 0 0%;
+        width: 30%;
+        margin: 10px 3% 50px 3%;
     }
+    .container--menu--flex {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20%;
+        margin: 4em 0 2em 0;
+    }   
 } 

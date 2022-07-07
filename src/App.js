@@ -1,6 +1,6 @@
 import './css/App.css';
-import Banner from './Banner';
-import Router from "./Router";
+import Banner from './components/Banner';
+import Router from "./components/Router";
 
 function App() {
 

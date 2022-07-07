@@ -6,11 +6,11 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import MovieDetail from "./MovieDetail";
+import MovieDetail from "../MovieDetail";
 import Loader from "./Loader";
 const Home = React.lazy(() => {
     return new Promise(resolve => {
-        setTimeout(() => resolve(import("./Home")), 2000);
+        setTimeout(() => resolve(import("./Home")), 1000);
     })
 })
 
@@ -22,7 +22,7 @@ const Router = () => {
             headers: {
             Authorization: "Api-Key q3MNxtfep8Gt", },
         }).then((res => res.json()))
-        .then((json) => setMovieData(json));
+        .then((json) => setMovieData(json.data));
     }, []);
 
     return (
