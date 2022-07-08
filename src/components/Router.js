@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import MovieDetail from "./MovieDetail";
 import Loader from "./Loader";
+
 const Home = React.lazy(() => {
     return new Promise(resolve => {
         setTimeout(() => resolve(import("./Home")), 1000);
@@ -28,11 +29,11 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/Home" element={<Suspense fallback={<Loader />}><Home movieData={movieData} /></Suspense>}/>
-                <Route path="/Movie/:movieId" element={<MovieDetail/>}/>
+                <Route path="/Charter-Communication-Coding-Challenge/Home" element={<Suspense fallback={<Loader />}><Home movieData={movieData} /></Suspense>}/>
+                <Route path="/Charter-Communication-Coding-Challenge/Movie/:movieId" element={<MovieDetail/>}/>
                 <Route 
                     path="*"
-                    element={<Navigate to="/Home" replace />} />
+                    element={<Navigate to="/Charter-Communication-Coding-Challenge/Home" replace />} />
             </Routes>
         </BrowserRouter>
     )
