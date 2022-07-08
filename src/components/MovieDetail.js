@@ -16,7 +16,7 @@ const MovieDetail = () => {
 
     return (
         <div className="movie--detail--view">
-            {console.log(movieDetail)}
+            {/* {console.log(movieDetail)} */}
             <section>
                 <img 
                     className="image--detail--size"
@@ -25,9 +25,6 @@ const MovieDetail = () => {
                     alt="Not working" 
                 />
                 <h2 className="movie--detail-title--color">{movieDetail?.title}</h2>
-                {console.log(movieDetail?.genres?.reduce((previousValue, currentValue) => {
-                    return [currentValue, ...previousValue];
-                },[]).join(", "))}
                 <p className="movie--detail--color"><span className="movie--detail--bold">Genres: </span>{movieDetail?.genres?.reduce((previousValue, currentValue) => {
                     return [currentValue, ...previousValue];
                 },[]).join(", ")}</p>

@@ -7,6 +7,7 @@ const SearchBar = ({searchMovie, setSearchMovie}) => {
         <div className="searchBar__input-data">
             <input
                 required
+                title="home-search"
                 className="search__input-text"
                 type="text" 
                 value={searchMovie}

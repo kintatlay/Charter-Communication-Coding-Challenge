@@ -3,7 +3,7 @@ import "../css/Loader.css";
 
 const Loader = () => {
     return (
-        <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
+        <div data-testid="loader-styling" className="lds-ring"><div></div><div></div><div></div><div></div></div>
     )
 }
 

@@ -12,7 +12,6 @@ const Home = ({movieData}) => {
     const [genresOptions, setGenresOptions] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
     const recordPerPage = 10;
-    const [displayData, setDisplayData] = useState([]);
 
     useEffect(() => {
         const genresOptions = movieData?.reduce((previousValue, currentValue) => {
@@ -41,7 +40,7 @@ const Home = ({movieData}) => {
 
     useEffect(() => {
         var filterSearchMovie = function(searchWord) {
-            return movieData.filter(movie => movie.title.toLowerCase().indexOf(searchWord.toLowerCase()) !== -1);
+            return movieData?.filter(movie => movie.title.toLowerCase().indexOf(searchWord.toLowerCase()) !== -1);
         }
         if (genres === "All") {
             setFilteredData(filterSearchMovie(searchMovie));
@@ -67,7 +66,8 @@ const Home = ({movieData}) => {
                     </div>
                 </div>
             <ul>
-                {filteredData.length !== 0 ?
+                {console.log(filteredData)}
+                {filteredData?.length !== 0 ?
                     filteredData?.slice((currentPage-1)*recordPerPage, (currentPage)*recordPerPage).map((ele) => {
                         const image = (process.env.PUBLIC_URL + `/assets/moviePosterImages/${ele.id}.jpeg`);
                         return <Link className="container--list-item" to={`/Movie/${ele.id}`} key={ele.id}>
@@ -79,11 +79,11 @@ const Home = ({movieData}) => {
                     <p className="message--fallback--text" >No results were found.</p>
                 }
                 <Pagination
-                    totalPages={filteredData.length/recordPerPage}
+                    totalPages={filteredData?.length/recordPerPage}
                     itemsPerPage={recordPerPage}
                     handleClickPrev={handleClickPrev}
                     handleClickNext={handleClickNext}
-                    totalItems={filteredData.length}
+                    totalItems={filteredData?.length}
                     currentPage={currentPage}
                     handleClickPage={handleClickPage}
                 />
