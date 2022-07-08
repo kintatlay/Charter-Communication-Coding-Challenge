@@ -34,6 +34,10 @@
     text-decoration: none;
 }
 
+.container--list-item:hover {
+    background: linear-gradient(rgb(255, 255, 255, 0.20), rgb(71, 43, 95, 0.20));
+}
+
 .container--list-title--color {
     margin-bottom: 10px;
     color: rgba(255,255,255,0.6);
