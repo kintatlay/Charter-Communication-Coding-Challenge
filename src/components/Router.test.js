@@ -17,7 +17,7 @@ describe('routes using array of routers', () => {
         }, {});
     })
 
-    it('Should show Loader as Suspense component for /Home router (getting array of routes', () => {
-        expect(pathMap['/Home'].props.fallback).toStrictEqual(<Loader/>);
+    it('Should show Loader as Suspense component for /Charter-Communication-Coding-Challenge/Home router (getting array of routes', () => {
+        expect(pathMap['/Charter-Communication-Coding-Challenge/Home'].props.fallback).toStrictEqual(<Loader/>);
     })
 })
